@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-kji2k!^r@d_61*up)g@-=z28q=)m1p$w@zsispc536&rmuk2o4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []   
 
 
 # Application definition
@@ -86,18 +86,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+   #{
+   #    'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+   #},
+   #{
+   #    'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+   #},
+   #{
+   #    'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+   #},
+   #{
+   #    'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+   #},
 ]
 
 
@@ -127,3 +127,7 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
