@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+# TODO Add real username and replace existing one with lower case including creation of profile right 
 class Profile(models.Model):
   user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
   date_of_birth = models.DateField(blank=True, null=True)
