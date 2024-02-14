@@ -8,4 +8,5 @@ urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('register/', views.register, name='register'),
     path('edit/', views.edit, name='edit'),
+     path('activate/<uidb64>/<token>', views.activate, name='activate'),
 ]

@@ -131,3 +131,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# The number of seconds a password reset link is valid for (here 1 day).
+PASSWORD_RESET_TIMEOUT = 60 * 60 * 24 * 1
