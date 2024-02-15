@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 
+
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
+    {% if messages %}
+        {% for message in messages%}
+            {% if message.tags == 'error' %}
+                Want to resend activation link?
+            {% else %}
+                War wohl ok
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
     <h1>Dashboard</h1>
     <p>
         Welcome to your dashboard.

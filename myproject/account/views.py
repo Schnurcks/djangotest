@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from django.contrib.auth import login
-from django.core.mail import EmailMessage, send_mail
+from django.contrib.auth.forms import PasswordResetForm
+from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -22,10 +23,28 @@ def dashboard(request):
         'account/dashboard.html',
         {'section': 'dashboard'})
 
+def sent_activation_link(user, site):
+     # Email Address Confirmation Email
+            from_email = settings.EMAIL_HOST_USER
+            to_list = [user.email]
+            
+            email_subject = "Confirm your email for schnurcks.de"
+
+            message = render_to_string('account/email_confirmation.html',{
+                
+                'name': user.username.capitalize(),
+                'domain': site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': generate_token.make_token(user),
+            })
+
+            send_mail(email_subject, message, from_email, to_list, fail_silently=True)
+
+
 def register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
-
+    
         if user_form.is_valid():
             # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
@@ -36,34 +55,32 @@ def register(request):
             new_user.save()
 
             # Create the user profile
-            Profile.objects.create(user=new_user)
-
-            # Email Address Confirmation Email
-            from_email = settings.EMAIL_HOST_USER
-            to_list = [new_user.email]
+            Profile.objects.create(user=new_user)          
             current_site = get_current_site(request)
-            email_subject = "Confirm your email for schnurcks.de"
-            
-            temp_token = generate_token.make_token(new_user)
-            time.sleep(3)
 
-            message2 = render_to_string('account/email_confirmation.html',{
-                
-                'name': new_user.username,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(new_user.pk)),
-                'token': generate_token.make_token(new_user),
-                'temp_token': temp_token
-            })
+            sent_activation_link(new_user, current_site)
 
-            send_mail(email_subject, message2, from_email, to_list, fail_silently=True)
-                
             return render(request, 'account/register_done.html',{'new_user': new_user})
     
     else:
         user_form = UserRegistrationForm()
     
     return render(request,'account/register.html',{'user_form': user_form})
+
+# TODO Sent activation link again e.g. via password reset or delete user after 1 week of not confirmation
+def resent_activation(request):
+    
+
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            messages.success(request, 'FORM IS VALID' )    
+            # TODO check for user in db and create and sent activation link
+    else:
+        messages.error(request, 'Your account could not be activated! If you want to resent the activation link click <a href="/activationlink">here</a>' )
+
+    form = PasswordResetForm()
+    return render(request,'account/resent_activation.html', {'form': form })
 
 def activate(request,uidb64,token):
     try:
@@ -76,14 +93,13 @@ def activate(request,uidb64,token):
         new_user.is_active = True
         new_user.save()
         login(request,new_user)
-        messages.success(request, "Your Account has been activated!!")
+        messages.success(request, "Your account has been activated!")
         return render(request,'account/dashboard.html',{'section': 'dashboard'})
     else:
-        messages.error(request, "An error occrued!")
+        # TODO build in resending activation
+        messages.error(request, 'Your account could not be activated! If you want to resent the activation link click <a href="/activationlink">here</a>' )
         return render(request,'account/dashboard.html',{'section': 'dashboard'})
-    
-# TODO Sent activation link again e.g. via password reset or delete user after 1 week of not confirmation
-
+     
 @login_required
 def edit(request):
     if request.method == 'POST':

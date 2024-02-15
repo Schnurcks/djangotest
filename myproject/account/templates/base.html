@@ -23,7 +23,7 @@
                 {% endif %}
                     <span class="user">
                     {% if request.user.is_authenticated %}
-                        Hello {{ request.user.first_name|default:request.user.username }},
+                        Hello {{ request.user.first_name|default:request.user.username|title }},
                         <form id="logout-form" method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
                             <input type="hidden">
