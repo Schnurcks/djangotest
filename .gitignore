@@ -160,3 +160,6 @@ cython_debug/
 #.idea/
 
 myproject/media/
+myproject/db copy.sqlite3
+myproject/dbdump copy.json
+myproject/dbdump.json

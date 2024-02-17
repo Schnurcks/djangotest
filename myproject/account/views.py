@@ -65,7 +65,6 @@ def register(request):
     
     return render(request,'account/register.html',{'user_form': user_form, 'section': 'register'})
 
-# TODO Sent activation link again e.g. via password reset or delete user after 1 week of not confirmation
 def resend_activation(request):  
 
     if request.method == 'POST':
@@ -106,7 +105,6 @@ def activate(request,uidb64,token):
             messages.success(request, "Your account had been activated! In case you cannot login please try a passowrd reset!")
         return render(request,'account/dashboard.html',{'section': 'dashboard'})
     else:
-        # TODO build in resending activation
         messages.error(request, 'Your account could not be activated! If you want to resent the activation link click <a href="/activationlink">here</a>' )
         return render(request,'account/dashboard.html',{'section': 'dashboard'})
      
