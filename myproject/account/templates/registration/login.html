@@ -25,7 +25,11 @@
         </form>
         <p>
             <a href="{% url "password_reset" %}">
-            Forgotten your password?
+                Forgotten your password?
+            </a>
+            <br>
+            <a href="{% url "resend_activation" %}">
+                Activation link expired?
             </a>
         </p>
     </div>

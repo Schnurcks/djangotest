@@ -19,9 +19,7 @@ from . tokens import generate_token
 
 @login_required
 def dashboard(request):
-    return render(request,
-        'account/dashboard.html',
-        {'section': 'dashboard'})
+    return render(request,'account/dashboard.html',{'section': 'dashboard'})
 
 def sent_activation_link(user, site):
      # Email Address Confirmation Email
@@ -60,27 +58,36 @@ def register(request):
 
             sent_activation_link(new_user, current_site)
 
-            return render(request, 'account/register_done.html',{'new_user': new_user})
+            return render(request, 'account/register_done.html',{'new_user': new_user, 'section': 'register'})
     
     else:
         user_form = UserRegistrationForm()
     
-    return render(request,'account/register.html',{'user_form': user_form})
+    return render(request,'account/register.html',{'user_form': user_form, 'section': 'register'})
 
 # TODO Sent activation link again e.g. via password reset or delete user after 1 week of not confirmation
-def resent_activation(request):
-    
+def resend_activation(request):  
 
     if request.method == 'POST':
         form = PasswordResetForm(request.POST)
         if form.is_valid():
-            messages.success(request, 'FORM IS VALID' )    
-            # TODO check for user in db and create and sent activation link
-    else:
-        messages.error(request, 'Your account could not be activated! If you want to resent the activation link click <a href="/activationlink">here</a>' )
+            user_email = form.cleaned_data.get('email').lower()
+            
+            try:
+                user = User.objects.get(email__exact=user_email)
+                print(f'USER >> {user}')
+                current_site = get_current_site(request)
+                sent_activation_link(user, current_site)
+            except:
+                print('USER does not exist') 
+            
+            messages.success(request, 'If the email address is valid an activation link was sent, if you don''t receive an email please check your email address and try again')
+        
+        else:
+            messages.error(request, 'Please enter a valid email adress')
 
     form = PasswordResetForm()
-    return render(request,'account/resent_activation.html', {'form': form })
+    return render(request,'account/resend_activation.html', {'form': form })
 
 def activate(request,uidb64,token):
     try:
@@ -90,10 +97,13 @@ def activate(request,uidb64,token):
         new_user = None
 
     if new_user is not None and generate_token.check_token(new_user,token):
-        new_user.is_active = True
-        new_user.save()
-        login(request,new_user)
-        messages.success(request, "Your account has been activated!")
+        if new_user.is_active:
+            messages.warning(request, "Your account has already been activated!")    
+        else:
+            new_user.is_active = True
+            new_user.save()
+            login(request,new_user)
+            messages.success(request, "Your account had been activated! In case you cannot login please try a passowrd reset!")
         return render(request,'account/dashboard.html',{'section': 'dashboard'})
     else:
         # TODO build in resending activation
@@ -116,4 +126,4 @@ def edit(request):
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(
         instance=request.user.profile)
-    return render(request, 'account/edit.html', {'user_form': user_form, 'profile_form': profile_form})
+    return render(request, 'account/edit.html', {'user_form': user_form, 'profile_form': profile_form, 'section': 'edit'})
