@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block title %}Booklist{% endblock %}
+
+{% block content %}
+    <h1>Booklist</h1>
+    <p>
+        Plesse find below all available books.
+    </p>
+    {% for book in books %}
+        <p>{{ book.title }}</p>
+    {% endfor %}
+{% endblock %}

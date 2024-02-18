@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.core.exceptions import ValidationError
+
+def validate_svg(file):
+    if not file.name.lower().endswith('.svg'):
+        raise ValidationError("Only SVG-Files are allowed.")
+
 class Genre(models.Model):
   name = models.CharField(
     max_length=200,
@@ -28,6 +34,7 @@ class Book(models.Model):
   title = models.CharField(max_length=200)
   author = models.ForeignKey('Author', on_delete=models.RESTRICT, null=True)
   genre = models.ManyToManyField(Genre, help_text="Select a genre for this book")
+  cover = models.FileField(upload_to='books/%Y/%m/%d/', blank=True, validators=[validate_svg])
 
   class Meta:
     ordering = ['title', 'author']

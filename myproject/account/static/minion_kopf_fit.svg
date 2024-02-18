@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100mm"
+   height="100.00001mm"
+   viewBox="0 0 100 100.00001"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <path
+       style="fill:#0000ff;fill-opacity:1;stroke:#ffff00;stroke-width:1.2602;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path3"
+       d="M 99.369904,50.000011 A 49.369896,49.369888 0 0 1 50.115209,99.369765 49.369896,49.369888 0 0 1 0.63064932,50.230413 49.369896,49.369888 0 0 1 49.654407,0.63133279 49.369896,49.369888 0 0 1 99.367753,49.539214" />
+    <rect
+       style="fill:#828282;fill-opacity:1;stroke:#000000;stroke-width:1.74876;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1-4"
+       width="19.72394"
+       height="7.0805435"
+       x="40.450584"
+       y="40.079441"
+       ry="0.89524114" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffff00;stroke-width:1.04917;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 51.8203,17.166945 C 60.007809,3.1548763 63.245939,8.4217263 63.251699,8.4217263"
+       id="path2" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffff00;stroke-width:1.04917;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 50.795179,17.314545 C 47.417426,1.4411853 53.357459,3.1562563 53.361719,3.1523763"
+       id="path2-6" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffff00;stroke-width:0.890077;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 49.015143,16.918148 C 43.198555,2.7227093 40.898116,8.0584763 40.894024,8.0584763"
+       id="path2-3" />
+    <path
+       style="fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.171744;stroke-opacity:1"
+       id="path10"
+       d="M 88.13549,55.510677 A 38.946617,38.946617 0 0 1 49.279752,94.457188 38.946617,38.946617 0 0 1 10.24268,55.692435 38.946617,38.946617 0 0 1 48.916238,16.565014 38.946617,38.946617 0 0 1 88.133794,55.147166" />
+    <path
+       style="fill:#000000;stroke-width:0.264583"
+       d="m 22.981644,60.037399 c 52.562155,6.52526 52.539205,6.55387 52.539205,6.55387 l -22.48677,19.579247 -11.6543,-4.327887 z"
+       id="path7" />
+    <rect
+       style="fill:#828282;fill-opacity:1;stroke:none;stroke-width:0.534491;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect1"
+       width="16.196102"
+       height="6.3441062"
+       x="42.158264"
+       y="40.187771"
+       ry="0.80212837" />
+    <path
+       style="fill:#828282;fill-opacity:1;stroke:#000000;stroke-width:1.5;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path11"
+       d="M 45.090666,42.949345 A 10.871466,10.871466 0 0 1 34.244568,53.820781 10.871466,10.871466 0 0 1 23.347853,43.00008 10.871466,10.871466 0 0 1 34.143097,32.078145 10.871466,10.871466 0 0 1 45.090192,42.847875" />
+    <path
+       style="fill:#828282;fill-opacity:1;stroke:#000000;stroke-width:1.5;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path11-8"
+       d="M 77.840963,44.6954 A 10.871466,10.871466 0 0 1 66.994865,55.566836 10.871466,10.871466 0 0 1 56.09815,44.746136 10.871466,10.871466 0 0 1 66.893395,33.824201 10.871466,10.871466 0 0 1 77.84049,44.593931" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.0985668;stroke-opacity:1"
+       id="use9"
+       cx="66.797112"
+       cy="44.356152"
+       r="7.4507165" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.0985668;stroke-opacity:1"
+       id="use9-6"
+       cx="34.171738"
+       cy="43.14941"
+       r="7.4507165" />
+    <circle
+       style="fill:#0000ff;fill-opacity:1;stroke-width:0.313438"
+       id="Iris_links"
+       cx="34.054298"
+       cy="43.329601"
+       r="3.5" />
+    <circle
+       style="fill:#0000ff;fill-opacity:1;stroke-width:0.313438"
+       id="Iris_rechts"
+       cx="66.879868"
+       cy="44.284008"
+       r="3.5" />
+  </g>
+</svg>

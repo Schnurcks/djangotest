@@ -2,12 +2,20 @@
 <!DOCTYPE html>
     <html>
         <head>
+            <link rel="icon" type="image/svg+xml" href="{% static "minion_kopf_fit.svg" %}" />
             <title>{% block title %}{% endblock %}</title>
+            
             <link href="{% static "css/base.css" %}" rel="stylesheet">
         </head>
         <body>
             <div id="header">
-                <span class="logo">Homepage</span>
+                <span class="logo">
+                    <a href="{% url "booklist" %}">
+                    <img src="{% static "minion_kopf_fit.svg" %}" alt="Happy Minion Head" style="width:20px;height:20px;"/>        
+                    Homepage
+                    <a/>                
+                </span>
+            
                 {% if request.user.is_authenticated %}
                     <ul class="menu">
                         <li {% if section == "dashboard" %}class="selected"{% endif %}>
