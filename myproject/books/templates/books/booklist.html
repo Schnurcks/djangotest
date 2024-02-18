@@ -10,5 +10,9 @@
     </p>
     {% for book in books %}
         <p>{{ book.title }}</p>
+        {% if book.cover %}
+            <img src="media/{{ book.cover }}">
+        {% endif %}
+        
     {% endfor %}
 {% endblock %}
