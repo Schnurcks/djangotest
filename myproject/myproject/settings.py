@@ -128,10 +128,18 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # The number of seconds a password reset link is valid for (here 1 day).
 PASSWORD_RESET_TIMEOUT = 60 * 60 * 24 * 1
+
+try:
+    # pylint: disable=wildcard-import
+    # pylint: disable=unused-wildcard-import
+    from .local_settings import *
+    print("\nSuccesfully imported local_settings")
+except ImportError:
+    print("No local file imported.")
