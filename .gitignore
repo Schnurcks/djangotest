@@ -163,3 +163,5 @@ myproject/media/
 myproject/db copy.sqlite3
 myproject/dbdump copy.json
 myproject/dbdump.json
+myproject/dump.json
+myproject/users.json
