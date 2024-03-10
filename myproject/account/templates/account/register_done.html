@@ -6,6 +6,9 @@
   <h1>Welcome {{ new_user.first_name }}!</h1>
   <p>
     Your account has been successfully created and a verifciation email was sent to verify your email address.
-    Please click on the link in the email to acivate your account!
+    <br>
+    Please click on the link send to {{ new_user.email }} in the email to activate your account!
+    <br>
+    Accounts, which are not activated within 7 days will be deleted. 
   </p>
 {% endblock %}
