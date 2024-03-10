@@ -58,6 +58,7 @@ def register(request):
 
             sent_activation_link(new_user, current_site)
 
+            # TODO add dynamic deletion period for unused account and provide it in the confirmatipm form
             return render(request, 'account/register_done.html',{'new_user': new_user, 'section': 'register'})
     
     else:
